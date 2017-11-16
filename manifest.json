@@ -1,0 +1,31 @@
+{
+	"name": "Collapse generated files",
+	"version": "0.0.0",
+	"description": "Add a context menu to collapse files found inside of the /generated directory.",
+	"homepage_url": "https://github.com/jeffandersen/collapse-generated-github",
+	"manifest_version": 2,
+	"minimum_chrome_version": "51",
+	"icons": {
+		"128": "icon.png"
+	},
+	"permissions": [
+		"https://github.com/*/*/pull/*",
+    "contextMenus"
+	],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+	"content_scripts": [
+		{
+			"run_at": "document_end",
+			"matches": [
+				"https://github.com/*/*/pull/*/files"
+			],
+			"js": [
+				"content.js"
+			]
+		}
+	]
+}
